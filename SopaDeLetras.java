@@ -5,7 +5,7 @@ public class SopaDeLetras{
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcion1, opcion2, opcion3;
-        String palabraString, palabraNueva2, palabraNueva;
+        String palabraString, palabraNueva2, palabraNueva3, palabraNueva;
         ArrayList<String> listaPalabras = new ArrayList<>();
         do{
             System.out.println("Bienvenido, Juega y crea tu propia sopa de letras");
@@ -71,19 +71,35 @@ public class SopaDeLetras{
                                                     if(longitud < 5 || longitud > 10){
                                                         System.out.println("Error, debe ingresar una palabra de 5 a 10 caracteres");
                                                     }
-                                                    int index = listaPalabras.indexOf(palabraNueva);
-                                                    listaPalabras.set(index, palabraNueva2);
                                                 }while (palabraNueva2.length() < 5 || palabraNueva2.length() > 10);
+                                                int index = listaPalabras.indexOf(palabraNueva);
+                                                listaPalabras.set(index, palabraNueva2);
                                             } 
                                         break;
                                     case 3:
+                                        System.out.println("\nListado de palabras:");
+                                        for (String palabra : listaPalabras) {
+                                            System.out.println("- " + palabra);
+                                        }
+                                        System.out.println("Ingrese la palabra que desea eliminar");
+                                        palabraNueva3 = sc.nextLine();
+                                        if(listaPalabras.contains(palabraNueva3)){
+                                            listaPalabras.remove(palabraNueva3);
+                                        }else{
+                                            System.out.println("Esa palabra no existe, eliga otra");
+                                        }
+                                        System.out.println("\nListado de palabras:");
+                                        for (String palabra : listaPalabras) {
+                                            System.out.println("- " + palabra);
+                                        }
+
                                         break;
                                     case 4:
                                         System.out.println("Volviendo al menú principal");
                                         break;
                                     default:
                                 }
-                            }while(opcion2 != 4);
+                            }while(opcion3 != 4);
                             break;
                         case 2:
                             break;
