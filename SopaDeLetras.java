@@ -5,8 +5,9 @@ public class SopaDeLetras{
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcion1, opcion2, opcion3;
-        String palabraString, palabraNueva2, palabraNueva3, palabraNueva;
+        String palabraString, palabraNueva2, palabraNueva3, palabraNueva, usuario;
         ArrayList<String> listaPalabras = new ArrayList<>();
+        ArrayList<String> listarJugadores = new ArrayList<>();
         do{
             System.out.println("Bienvenido, Juega y crea tu propia sopa de letras");
             System.out.println("1) Nueva partida");
@@ -15,15 +16,18 @@ public class SopaDeLetras{
             System.out.println("4) Informacion del estudiante");
             System.out.println("5) Salir");
             opcion1 = sc.nextInt();
+            sc.nextLine();
              
             switch(opcion1){
                 case 1:
                     do {
+                        System.out.println("Ingrese su nombre su usuario");
+                        usuario = sc.nextLine();
+                        listarJugadores.add(usuario);
                         System.out.println("Ingrese a donde quiere ir");
                         System.out.println("1) Menú palabras");
                         System.out.println("2) Jugar");
                         System.out.println("3) Terminar partida");
-                        System.out.println("4) Salir");
                         opcion2 = sc.nextInt();
                         sc.nextLine();
                         switch (opcion2) {
@@ -33,7 +37,8 @@ public class SopaDeLetras{
                                 System.out.println("1) Insertar palabra");
                                 System.out.println("2) Modificar palabra");
                                 System.out.println("3) Eliminar palabra");
-                                System.out.println("4) Volver a menú principal");
+                                System.out.println("4) Listar palabras");
+                                System.out.println("5) Volver a menú principal");
                                 opcion3 = sc.nextInt();
                                 sc.nextLine();
                                 switch (opcion3) {
@@ -95,11 +100,17 @@ public class SopaDeLetras{
 
                                         break;
                                     case 4:
-                                        System.out.println("Volviendo al menú principal");
+                                        System.out.println("\nListado de palabras:");
+                                        for (String palabra : listaPalabras) {
+                                            System.out.println("- " + palabra);
+                                        }
                                         break;
+                                    case 5:
+                                        System.out.println("Regresando al menu principal");
                                     default:
+                                        System.out.println("Ingrese una opcion valida");
                                 }
-                            }while(opcion3 != 4);
+                            }while(opcion3 != 5);
                             break;
                         case 2:
                             break;
@@ -111,13 +122,22 @@ public class SopaDeLetras{
                         default:
                             break;
                         }
-                    } while (opcion2 != 4);
+                    } while (opcion2 != 3);
                     break;
                 case 2:
+                    System.out.println("Historial de partidas");
                     break;
                 case 3:
+                    System.out.println("Las puntuaciones mas altas");
+                    for (String usuarios : listarJugadores) {
+                        System.out.println("- " + usuarios);
+                    }
                     break;
                 case 4:
+                    System.out.println("-/-/-/- Informacion del estudiante /-/-/-/-/-/");
+                    System.out.println("------ Bany Alejandro Quiñonez Zepeda --------");
+                    System.out.println("------ 20222 ");
+                    System.out.println("--------------- Seccion 'E' ------------------");
                     break;
                 case 5:
                     System.out.println("Hasta pronto");
